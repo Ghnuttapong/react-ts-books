@@ -1,25 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import {Routes, Route} from 'react-router-dom'
+
+import BookItem from './pages/books/item-books';
+import BooksAdd from './pages/books/add-books'
+import DrawerMain from './components/drawer/drawer';
+import BooksList from './pages/books/list-books';
+import Notfound from './pages/404/notfound';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <div>
+    <DrawerMain />
+    <Routes>
+      <Route path="/" element={<BooksList />} />
+      <Route path="/books" element={<BookItem />} />
+      <Route path="/books/add" element={<BooksAdd />} />
+      <Route path='*' element={<Notfound />} />
+    </Routes>
+   </div> 
   );
 }
 
